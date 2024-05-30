@@ -12,7 +12,7 @@
 	<?php
 		require_once("sql_connect.php");
 
-		$sql_patient_query = $conn->query("SELECT patient_id, first_name, last_name, email FROM patient ORDER BY patient_id");
+		$sql_patient_query = $conn->query("SELECT patient_id, first_name, last_name, address_name, email FROM patient JOIN address ON address.address_id = patient.address_id ORDER BY patient_id");
 		if ($sql_patient_query->num_rows > 0) {
 			$rows = $sql_patient_query->fetch_all(MYSQLI_ASSOC);
 
@@ -22,6 +22,7 @@
 					<th>ID</th>
 					<th>First name</th>
 					<th>Last name</th>
+					<th>Address</th>
 					<th>Email</th>
 				</tr>
 			<?php
