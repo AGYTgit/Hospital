@@ -19,7 +19,9 @@
 		
 		<input type="text" id="title" name="title" placeholder="Title"><br>
 
-		<input type="email" id="email" name="email" placeholder="Email"><br>
+		<!-- <input type="text" id="address" name="address" placeholder="Address"><br> -->
+
+		<input type="text" id="email" name="email" placeholder="Email"><br>
 
 		<input type="submit" name="submit" value="Insert">
 	</form></div>
