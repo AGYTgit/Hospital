@@ -48,7 +48,7 @@
                 $sql = "INSERT INTO patient (first_name, last_name, email, address_id) VALUES ('$first_name', '$last_name','$email', '$address_id')";
                 $isInserted = $conn->query($sql);
                 if ($isInserted) {
-                    header("Location: index.php");
+                    header("Location: patient.php");
                     exit();
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

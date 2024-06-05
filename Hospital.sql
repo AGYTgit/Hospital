@@ -34,7 +34,7 @@ CREATE TABLE Patient (
   phone_number VARCHAR(20),
   address_id INT NOT NULL,
   PRIMARY KEY (patient_id),
-  FOREIGN KEY (address_id) REFERENCES Address(address_id)
+  FOREIGN KEY (address_id) REFERENCES Address(address_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Event (
@@ -44,7 +44,7 @@ CREATE TABLE Event (
   event_date DATETIME NOT NULL,
   event_end DATETIME,
   PRIMARY KEY (event_id),
-  FOREIGN KEY (patient_id) REFERENCES Patient(patient_id)
+  FOREIGN KEY (patient_id) REFERENCES Patient(patient_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Event_Staff (

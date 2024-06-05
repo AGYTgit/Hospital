@@ -24,6 +24,7 @@
 					<th>Last name</th>
 					<th>Address</th>
 					<th>Email</th>
+					<th>Delete</th>
 				</tr>
 			<?php
 			foreach ($rows as $row) {
@@ -31,7 +32,16 @@
 				foreach ($row as $data) {
 					?><td><?php echo $data; ?></td><?php
 				}
-				?></tr><?php
+				?>
+				<td class="delete_td">
+					<form action="delete.php" method="post" class="delete">
+						<input type="hidden" name="delete_id" value="<?php echo $row['patient_id']; ?>">
+						<input type="hidden" name="location" value="patient">
+						<input type="submit" name="delete" value="Delete">
+					</form>
+				</td>
+				</tr>
+				<?php
 			}
 			?></thead></table></div><?php
 		}

@@ -51,7 +51,7 @@
                 $sql = "INSERT INTO staff (first_name, last_name, title, email, address_id) VALUES ('$first_name', '$last_name', '$title', '$email', '$address_id')";
                 $isInserted = $conn->query($sql);
                 if ($isInserted) {
-                    header("Location: index2.php");
+                    header("Location: staff.php");
                     exit();
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
