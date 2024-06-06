@@ -121,13 +121,19 @@ form {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+.update-delete {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
 .delete_td {
     display: flex;
     align-self: center;
     justify-content: center;
 }
 
-.delete, .delete input[type='submit'] {
+.delete, .delete input[type='submit'], .update, .update input[type='submit'] {
     padding: 0;
     width: 50px;
     height: 25px;
@@ -137,12 +143,16 @@ form {
     box-shadow: none;
 }
 
+.update, .update input[type='submit'] {
+    color: skyblue;
+}
+
 .delete_button {
     color: red;
     border: hidden;
 }
 
-input[type="text"] {
+input[type="text"], select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -169,4 +179,9 @@ input[type="submit"]:hover {
 .delete input[type='submit']:hover {
     color: white;
     background-color: red;
+}
+
+.update input[type='submit']:hover {
+    color: white;
+    background-color: skyblue;
 }

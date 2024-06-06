@@ -24,6 +24,7 @@
 					<th>First name</th>
 					<th>Last name</th>
 					<th>Email</th>
+					<th>Update</th>
 					<th>Delete</th>
 				</tr>
 			<?php
@@ -33,9 +34,16 @@
 					?><td><?php echo $data; ?></td><?php
 				}
 				?>
+				<td class="update_td">
+					<form action="update.php" method="post" class="update">
+						<input type="hidden" name="update_id" value="<?php echo $row['staff_id']?>">
+						<input type="hidden" name="location" value="staff">
+						<input type="submit" name="delete" value="Update">
+					</form>
+				</td>
 				<td class="delete_td">
 					<form action="delete.php" method="post" class="delete">
-						<input type="hidden" name="delete_id" value="<?php echo $row['staff_id']; ?>">
+						<input type="hidden" name="delete_id" value="<?php echo $row['staff_id']?>">
 						<input type="hidden" name="location" value="staff">
 						<input type="submit" name="delete" value="Delete">
 					</form>
