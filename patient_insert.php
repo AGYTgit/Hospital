@@ -53,15 +53,11 @@
         $stmt->execute();
         $address_result = $stmt->get_result();
 
-        $address_id = 0;
         if ($address_result->num_rows > 0) {
             $address_row = $address_result->fetch_assoc();
             $address_id = $address_row['address_id'];
         } else {
-            // Address doesn't exist, display error message
             $err = 1;
-            echo "Address not found! Please create the address first.";
-            exit;
         }
 
         if ($first_name == "" || $last_name == "" || $email == "" || $address_id == "") {
