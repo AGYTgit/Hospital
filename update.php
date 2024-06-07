@@ -12,7 +12,7 @@
 	<?php require_once("sql_connect.php")?>
     <?php
         if ($_POST['location'] == "patient") {
-            $sql_patient_query = $conn->query("SELECT first_name, last_name, address_name, email FROM patient JOIN address ON address.address_id = patient.address_id WHERE patient_id == $_POST[update_id]");
+            $sql_patient_query = $conn->query("SELECT first_name, last_name, address_name, email, address.address_id FROM patient JOIN address ON address.address_id = patient.address_id WHERE patient_id = $_POST[update_id]");
             if (!$sql_patient_query) {
                 echo "Error: ". $conn->error;
             } else {
@@ -21,7 +21,7 @@
                 }
             }
         } else if ($_POST['location'] == "staff") {
-            $sql_staff_query = $conn->query("SELECT title, first_name, last_name, email FROM staff WHERE staff_id == $_POST[update_id]");
+            $sql_staff_query = $conn->query("SELECT title, first_name, last_name, email, address_id FROM staff WHERE staff_id = $_POST[update_id]");
             if (!$sql_staff_query) {
                 echo "Error: ". $conn->error;
             } else {
@@ -34,12 +34,16 @@
         ?>
 
 
-        <div class="table-wrapper"><form method="post">
-		<input type="text" name="first_name" placeholder="First name"><br>
+        <div class="table-wrapper"><form action="update2.php" method="post">
 
-		<input type="text" name="last_name" placeholder="Last name"><br>
+		<input type="hidden" name="update_id" value="<?php echo $_POST['update_id']?>"><br>
+		<input type="hidden" name="location" value="<?php echo $_POST['location']?>"><br>
 
-		<input type="text" name="email" placeholder="Email"><br>
+		<input type="text" name="first_name" placeholder="First name" value="<?php echo $rows[0]['first_name']?>"><br>
+
+		<input type="text" name="last_name" placeholder="Last name" value="<?php echo $rows[0]['last_name']?>"><br>
+
+		<input type="text" name="email" placeholder="Email" value="<?php echo $rows[0]['email']?>"><br>
 
         <?php if ($_POST['location'] == "staff") { ?>
             <select name="title">
@@ -50,7 +54,7 @@
             </select>
         <?php } ?>
 
-		<select name="address_name" id="address_name_id">
+		<select name="address_id" id="address_name_id">
                 <option value="-1">Address</option>
                 <?php
                 $address_list_sql = "SELECT address_id, address_name FROM `address`";
@@ -59,7 +63,7 @@
                 if ($address_list_result->num_rows > 0) {
                     while ($address_list_row = $address_list_result->fetch_assoc()) {
                         ?>
-                        <option value="<?php echo $address_list_row['address_name']?>">
+                        <option value="<?php echo $address_list_row['address_id']?>" <?php if ($address_list_row['address_id'] == $rows[0]['address_id']) {echo "selected";}?>>
                             <?php echo $address_list_row['address_name']?>
                         </option>
                         <?php
@@ -68,9 +72,8 @@
                 ?>
             </select>
 
-		<input type="submit" name="submit" value="Insert">
+		<input type="submit" name="submit" value="Update">
 	</form></div>
-
 
 	<?php require_once("footer.php")?>
 </body>

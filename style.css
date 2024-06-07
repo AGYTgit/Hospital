@@ -134,18 +134,17 @@ form {
     justify-content: center;
 }
 
-.delete, .delete input[type='submit'], .update {
+.delete, .delete input[type='submit'], .update, .update input[type='submit'] {
     padding: 0;
     width: 50px;
     height: 25px;
     border: hidden;
-    border-radius: 5px;
     color: rgb(255, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     box-shadow: none;
 }
 
-.update {
+.update, .update input[type='submit'] {
     color: skyblue;
 }
 
@@ -155,7 +154,7 @@ form {
 }
 
 input[type="text"], select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -183,7 +182,7 @@ input[type="submit"]:hover {
     background-color: red;
 }
 
-.update:hover {
+.update input[type='submit']:hover {
     color: white;
     background-color: skyblue;
 }

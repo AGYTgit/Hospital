@@ -29,13 +29,17 @@
 				</tr>
 			<?php
 			foreach ($rows as $row) {
-				?><tr class="<?php echo $row['patient_id'] . "-text"?>" style="display: table-row;"><?php
+				?><tr><?php
 				foreach ($row as $data) {
 					?><td><?php echo $data; ?></td><?php
 				}
 				?>
 				<td class="update_td">
-				<button onclick="updatePatient('<?php echo $row['patient_id']; ?>')" class="update">Update</button>
+					<form action="update.php" method="post" class="update">
+						<input type="hidden" name="update_id" value="<?php echo $row['patient_id']?>">
+						<input type="hidden" name="location" value="patient">
+						<input type="submit" name="delete" value="Update">
+					</form>
 				</td>
 				<td class="delete_td">
 					<form action="delete.php" method="post" class="delete">
@@ -45,40 +49,11 @@
 					</form>
 				</td>
 				</tr>
-
-
-				<tr class="<?php echo $row['patient_id'] . "-input" ?>" style="display: none;"><?php
-				foreach ($row as $data) {
-					?><td><input type="text" value="<?php echo $data;?>"></td><?php
-				}
-				?>
-				<td class="update_td">
-					
-				</td>
-				<td class="delete_td">
-					
-				</td>
-				</tr>
-				<?php
+			<?php
 			}
 			?></thead></table></div><?php
 		}
 	?>
-
-	<script>
-		function updatePatient(patientId) {
-			var textRow = document.getElementsByClassName(patientId + '-text');
-			var inputRow = document.getElementsByClassName(patientId + '-input');
-
-			if (textRow !== null) {
-				textRow.style.display = 'none';
-			}
-
-			if (inputRow !== null) {
-				inputRow.style.display = 'table-row';
-			}
-		}
-	</script>
 	<?php require_once("footer.php")?>
 </body>
 </html>
