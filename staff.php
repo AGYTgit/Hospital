@@ -12,7 +12,7 @@
 	<?php
 		require_once("sql_connect.php");
 
-		$sql_staff_query = $conn->query("SELECT staff_id, title, first_name, last_name, email FROM staff ORDER BY staff_id");
+		$sql_staff_query = $conn->query("SELECT staff_id, title, first_name, last_name, email FROM staff ORDER BY staff_id DESC LIMIT 5");
 		if ($sql_staff_query->num_rows > 0) {
 			$rows = $sql_staff_query->fetch_all(MYSQLI_ASSOC);
 
